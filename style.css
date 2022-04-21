@@ -1,0 +1,75 @@
+
+.inputs-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 100px 100px;
+}
+
+
+.custom-file{
+    margin-top: 35px;
+}
+
+section{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.row-actions{
+    width: 400px;
+}
+
+#iframe{
+    width: 297mm;
+    height: 210mm;
+}
+
+#alert{
+    position: fixed;
+    bottom: 0px;
+    left: -1000px;
+    z-index: 9999;
+}
+
+div[reveal]{
+    animation: reveal 4s;
+}
+
+@keyframes reveal {
+    0%{
+        left: -1000px;
+        
+    }    
+    25%{
+        left: 0px;
+        
+    }    
+    50%{
+        left: 0px;
+        
+    }    
+    60%{
+        left: 0px;
+        
+    }    
+    75%{
+        left: 0px;
+        
+    }    
+    80%{
+        left: 0px;
+        
+    }    
+    90%{
+        left: 0px;
+        
+    }    
+    95%{
+        left: -500px;
+        
+    }    
+    100%{
+        left: -1000px;
+        
+    }    
+}

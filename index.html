@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        />
+        <!-- Google Fonts -->
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+        <!-- Bootstrap core CSS -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <!-- Material Design Bootstrap -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+            rel="stylesheet"
+        />
+        <link href="./style.css" rel="stylesheet" />
+        <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+		<script type="text/javascript" src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js"></script>
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div class="alert" id="alert" role="alert">
+        </div>
+        <section id="form">
+            <!-- <form> -->
+            <div class="inputs-wrapper">
+                <!-- Type de certificat input -->
+                <div class="md-form">
+                    <input type="text" id="type" class="form-control" />
+                    <label>Type de certificat</label>
+                </div>
+                <!-- Material input -->
+                <div class="md-form">
+                    <input type="text" id="title" class="form-control" />
+                    <label>Titre de formation</label>
+                </div>
+                <!-- Material input -->
+                <div class="md-form">
+                    <input type="text" id="desc" class="form-control" />
+                    <label>Description de formation</label>
+                </div>
+            </div>
+            <div class="inputs-wrapper">
+                <!-- Type de certificat input -->
+                <div class="md-form">
+                    <input
+                        type="date"
+                        id="date"
+                        class="form-control"
+                        name="trip-start"
+                        value="2018-07-22"
+                        min="2018-01-01"
+                        max="2024-12-31"
+                    />
+                    <label>date</label>
+                </div>
+                <!-- Material input -->
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="bg" lang="en" />
+                    <label class="custom-file-label">Background Image</label>
+                </div>
+                <!-- Material input -->
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="excel" lang="en" />
+                    <label class="custom-file-label">Excel File</label>
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: space-around;">
+                <div>
+                    <label>Primary color</label>
+                    <input type="color" id="primary-color" value="#FF0000">
+                </div>
+                <div>
+                    <label>Secondary color</label>
+                    <input type="color" id="secondary-color" value="#000000">
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-primary btn-block my-5" type="submit" onclick="generate_table()" >Generate Student Table</button>
+                <button class="btn btn-secondary btn-block my-5" type="submit" id="preview" onclick="preview()" >see preview</button>
+            </div>
+            <!-- </form> -->
+        </section>
+        <div id="preview" style="text-align: center;">
+            <iframe hidden id="iframe" ></iframe>
+        </div>
+        <section id="results" hidden>
+            <table class="table">
+                <thead class="black white-text">
+                    <tr>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="table_body">
+                </tbody>
+            </table>
+
+        </section>
+        <!-- MDB -->
+        <!-- JQuery -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        ></script>
+        <!-- Bootstrap tooltips -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+        ></script>
+        <!-- Bootstrap core JavaScript -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+        ></script>
+        <!-- MDB core JavaScript -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"
+        ></script>
+
+		<script src="./main.js"></script>
+
+        <div hidden id="email-content">
+            <div>Hello ,</div>
+
+            <div>You can find your certificate attached in a PDF file.</div>
+
+            <div>sincerely.</div>
+        </div>
+    </body>
+</html>
